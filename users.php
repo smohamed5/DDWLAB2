@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> my first page </title>
+<title> users </title>
 </head>
+<body>
 <?php 
 include connect.php;
 
@@ -17,6 +18,22 @@ if ($result->num_rows_ > 0 {
                                 echo "<th>Surname</th>";
                                 echo "<th>Email</th>";
                                 echo "</tr>";
-
+    while($row = $result->fetch_assoc())
+    {
+        echo "<tr>";
+        echo "<td>".$row['ID']."</td>";
+        echo "<td>".$row['firstname']."</td>";
+        echo "<td>".$row['surname']."</td>";
+        echo "<td>".$row['email']."</td>";
+        echo "</tr>";
+    }   
+    echo "</table>";
+} else { 
+    echo "0 results";
+}
+$result->close();
+$mysqli->close();
+}
+?>
 </body>
 </html>
